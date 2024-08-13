@@ -1,0 +1,94 @@
+
+{
+    "questions": [
+      {
+        "question": "When is the hackathon?",
+        "answer": "The hackathon will take place from October 1st to October 17th."
+      },
+      {
+        "question": "Hello",
+        "answer": "Hello, Good to have you here"
+      },
+      {
+        "question": "What is the location of the hackathon?",
+        "answer": "The hackathon will be held at flexera office"
+      },
+      {
+        "question": "How can I register for the hackathon?",
+        "answer": "You can register by visiting the 'Register' section on our website and filling out the registration form."
+      },
+      {
+        "question": "What are the rules for the hackathon?",
+        "answer": "You can find the detailed rules and guidelines in the 'Rules' section on our website."
+      },
+      {
+        "question": "What is the theme of the hackathon?",
+        "answer": "This year's theme is 'Sustainability and Innovation.'"
+      },
+      {
+        "question": "Who can participate in the hackathon?",
+        "answer": "The hackathon is open to Only flexera employees"
+      },
+      {
+        "question": "Are there any prizes for the winners?",
+        "answer": "Yes, we have exciting prizes including cash awards, gadgets, and internship opportunities."
+      },
+      {
+        "question": "Can I participate as a solo participant?",
+        "answer": "Yes, you can participate individually or as part of a team."
+      },
+      {
+        "question": "What is the maximum team size?",
+        "answer": "The maximum team size is 5 members."
+      },
+      {
+        "question": "Will there be any workshops or talks?",
+        "answer": "Yes, we have a lineup of workshops and talks by industry experts. Check the 'Schedule' section for more details."
+      },
+      {
+        "question": "What is the deadline for registration?",
+        "answer": "The registration deadline is august 30th."
+      },
+      {
+        "question": "How can I submit my project idea?",
+        "answer": "You can submit your project through the 'Submission' portal on our website."
+      },
+      {
+        "question": "Is there any participation fee?",
+        "answer": "No, participation is completely free."
+      },
+      {
+        "question": "Will food and accommodation be provided?",
+        "answer": "Yes, we will provide meals and accommodation for all participants."
+      },
+      {
+        "question": "How can I contact the organizers?",
+        "answer": "You can reach out to us via email at contact@hackathonwebsite.com."
+      },
+      {
+        "question": "What is the judging criteria?",
+        "answer": "Projects will be judged based on innovation, impact, feasibility, and presentation."
+      },
+      {
+        "question": "Can I use external APIs in my project?",
+        "answer": "Yes, you are allowed to use external APIs and libraries."
+      },
+      {
+        "question": "Will there be any pre-hackathon events?",
+        "answer": "Yes, we have pre-hackathon webinars and networking events. Check the 'Events' section for more info."
+      },
+      {
+        "question": "Do I need to bring my own laptop?",
+        "answer": "Yes, participants are required to bring their own laptops and necessary equipment."
+      },
+      {
+        "question": "What should I do if I face technical issues during the hackathon?",
+        "answer": "You can contact our technical support team at techsupport@hackathonwebsite.com."
+      },
+      {
+        "question": "This event is completely ridiculous!",
+        "answer": "Please refrain from using abusive language."
+      }
+    ]
+  }
+  
