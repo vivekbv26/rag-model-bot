@@ -82,46 +82,24 @@ def get_flexhack_response():
         predicted_answer = clf.predict(X_user)[0]
         return jsonify({'response': predicted_answer})
     else:
-        return jsonify({'response': "Sorry, the chatbot is not functioning properly."})
+        return jsonify({'response': "Error: Could not process the request."})
 
-@app.route('/add-question', methods=['POST'])
-def add_question():
-    user_input = request.json.get('question')
-    user_response = request.json.get('response')
-    
-    if not user_input or not user_response:
-        return jsonify({'status': 'error', 'message': 'Question and response are required.'})
-
+# API route to add a new question-answer pair to the knowledge base
+@app.route('/add-question-answer', methods=['POST'])
+def add_question_answer():
     try:
-        # Load and update knowledge base
-        knowledge_base = load_knowledge_base(KNOWLEDGE_BASE_PATH)
-        new_entry = {"question": user_input, "answer": user_response}
-        knowledge_base["questions"].append(new_entry)
-        
-        # Save updated knowledge base
+        new_question = request.json.get('question')
+        new_answer = request.json.get('answer')
+        if not new_question or not new_answer:
+            return jsonify({'status': 'error', 'message': 'Invalid input'}), 400
+        knowledge_base["questions"].append({"question": new_question, "answer": new_answer})
         save_knowledge_base(KNOWLEDGE_BASE_PATH, knowledge_base)
-        logging.info(f"Added new entry: {new_entry}")
-
-        # Retrain model with updated knowledge base
         global vectorizer, clf
         vectorizer, clf = train_intent_classifier(knowledge_base)
-        logging.info("Model retrained successfully.")
-
-        return jsonify({'status': 'success', 'message': 'Question added and model retrained.'})
-
+        return jsonify({'status': 'success', 'message': 'Q&A pair added successfully'})
     except Exception as e:
-        logging.error(f"Error adding question: {e}")
-        return jsonify({'status': 'error', 'message': 'Failed to add question.'})
+        logging.error(f"Error adding question-answer: {e}")
+        return jsonify({'status': 'error', 'message': 'Failed to add Q&A pair'}), 500
 
-# Placeholder functions for Flexera and Gemini responses
-def get_flexera_response(query):
-    # Placeholder function to call Flexera API
-    return "Flexera API response"
-
-def get_gemini_llm_response(query):
-    # Placeholder function to call Gemini LLM
-    return "Gemini LLM response"
-
-# Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
