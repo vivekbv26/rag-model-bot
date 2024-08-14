@@ -1,5 +1,5 @@
 import React from 'react';
-import Chat from './Chat';
+import Chat from '../src/components/Chat/Chat';
 import Tabs from './Tabs';
 import Footer from './Footer';
 import "../src/App.css"

@@ -1,0 +1,11 @@
+.message-wrapper {
+  display: flex;
+}
+
+.left-display {
+  justify-content: start;
+}
+
+.right-display {
+  justify-content: end;
+}
