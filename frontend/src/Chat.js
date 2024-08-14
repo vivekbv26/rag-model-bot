@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const ChatContainer = styled.div`
   width: 100%;
-  max-width: 600px;
+  // max-width: 600px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,7 +29,7 @@ const Message = styled.div`
   border-radius: 5px;
   max-width: 80%;
   word-wrap: break-word;
-  align-self: ${props => (props.type === 'user-message' ? 'flex-end' : 'flex-start')};
+  : ${props => (props.type === 'user-message' ? 'end' : 'start')};
   background-color: ${props => (props.type === 'user-message' ? '#007bff' : '#e5e5ea')};
   color: ${props => (props.type === 'user-message' ? 'white' : 'black')};
 `;

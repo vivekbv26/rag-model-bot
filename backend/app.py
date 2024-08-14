@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import json
 import logging
+import time
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -67,6 +68,7 @@ def home():
 # API route for chatbot response
 @app.route('/get-response', methods=['POST'])
 def get_flexhack_response():
+    time.sleep(2)
     user_input = request.json.get('message')
     
     if not user_input:
