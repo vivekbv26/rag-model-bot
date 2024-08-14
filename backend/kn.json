@@ -3,27 +3,24 @@
     "questions": [
       {
         "question": "When is the hackathon?",
-        "answer": "The hackathon will take place from October 1st to October 17th."
+        "answer": "The hackathon will take place from October 4th to October 11th."
       },
       {
         "question": "Hello",
         "answer": "Hello, Good to have you here"
       },
-      {
-        "question": "What is the location of the hackathon?",
-        "answer": "The hackathon will be held at flexera office"
-      },
+
       {
         "question": "How can I register for the hackathon?",
-        "answer": "You can register by visiting the 'Register' section on our website and filling out the registration form."
+        "answer": "You can register by visiting the 'Register/Submit Idea' section on our website and filling out the registration form."
       },
       {
         "question": "What are the rules for the hackathon?",
-        "answer": "You can find the detailed rules and guidelines in the 'Rules' section on our website."
+        "answer": "You can find the detailed rules and guidelines on our website."
       },
       {
         "question": "What is the theme of the hackathon?",
-        "answer": "This year's theme is 'Sustainability and Innovation.'"
+        "answer": "ITAM and Hybrid FinOps, TI Platform, AI, Sustainability, Security, Quality, Cost Reduction, Customer Adoption, Sales Cycle, Customer Offboarding"
       },
       {
         "question": "Who can participate in the hackathon?",
@@ -31,7 +28,7 @@
       },
       {
         "question": "Are there any prizes for the winners?",
-        "answer": "Yes, we have exciting prizes including cash awards, gadgets, and internship opportunities."
+        "answer": "Yes, we have exciting prizes including cash awards"
       },
       {
         "question": "Can I participate as a solo participant?",
@@ -39,15 +36,15 @@
       },
       {
         "question": "What is the maximum team size?",
-        "answer": "The maximum team size is 5 members."
+        "answer": "The maximum team size is 4-5 members."
       },
       {
         "question": "Will there be any workshops or talks?",
-        "answer": "Yes, we have a lineup of workshops and talks by industry experts. Check the 'Schedule' section for more details."
+        "answer": "Yes, we have a lineup of workshops by SME's on Databricks, AWS and Data/AI trainings"
       },
       {
         "question": "What is the deadline for registration?",
-        "answer": "The registration deadline is august 30th."
+        "answer": "The registration deadline submit idea and register is august 25th."
       },
       {
         "question": "How can I submit my project idea?",
@@ -57,17 +54,14 @@
         "question": "Is there any participation fee?",
         "answer": "No, participation is completely free."
       },
-      {
-        "question": "Will food and accommodation be provided?",
-        "answer": "Yes, we will provide meals and accommodation for all participants."
-      },
+      
       {
         "question": "How can I contact the organizers?",
-        "answer": "You can reach out to us via email at contact@hackathonwebsite.com."
+        "answer": "You can reach out to Flexhack2024 (Teams channel)"
       },
       {
         "question": "What is the judging criteria?",
-        "answer": "Projects will be judged based on innovation, impact, feasibility, and presentation."
+        "answer": "Projects will be judged based on innovation, impact, feasibility, presentation, automated optimizations, user-friendly dashboard."
       },
       {
         "question": "Can I use external APIs in my project?",
@@ -75,19 +69,86 @@
       },
       {
         "question": "Will there be any pre-hackathon events?",
-        "answer": "Yes, we have pre-hackathon webinars and networking events. Check the 'Events' section for more info."
+        "answer": "Yes, we have pre-hackathon webinars by SME's."
       },
-      {
-        "question": "Do I need to bring my own laptop?",
-        "answer": "Yes, participants are required to bring their own laptops and necessary equipment."
-      },
+      
       {
         "question": "What should I do if I face technical issues during the hackathon?",
         "answer": "You can contact our technical support team at techsupport@hackathonwebsite.com."
       },
+      
       {
-        "question": "This event is completely ridiculous!",
-        "answer": "Please refrain from using abusive language."
+        "question": "What is the main objective of FlexHack 2024?",
+        "answer": "The main objective is to leverage combined Flexera-Snow teams to drive more innovation and collaboration to grow ITAM and Hybrid FinOps, accelerate the TI platform, and explore new use cases in Sustainability and Security (CAASM)."
+      },
+      {
+        "question": "When is the FlexHack 2024 launching?",
+        "answer": "The FlexHack 2024 is scheduled to launch on August 5, 2024."
+      },
+      {
+        "question": "What is the budget allocated for FlexHack 2024?",
+        "answer": "The budget allocated for FlexHack 2024 is $12,500 USD."
+      },
+      {
+        "question": "Who can submit ideas for FlexHack 2024?",
+        "answer": "All Flexera & Snow Engineering and Product teams can submit ideas."
+      },
+      {
+        "question": "When will the top 10-15 ideas be announced?",
+        "answer": "The top 10-15 ideas will be announced between 25th to 30th August."
+      },
+      
+      {
+        "question": "When will the winners be announced?",
+        "answer": "The winners will be announced in the last week of October 2024, possibly during the Engineering All Hands."
+      },
+      {
+        "question": "What kind of team structure is expected for FlexHack 2024?",
+        "answer": "The typical team structure includes 1 PO/PM, 3-4 engineers, and 1 SME (shared resource, sponsored by ELT/PLT as needed)."
+      },
+      {
+        "question": "What trainings are planned for FlexHack 2024 participants?",
+        "answer": "Trainings will leverage Databricks and AWS and will include Data/AI training sessions in August and September 2024."
+      },
+      {
+        "question": "When is the Readout to ELT/PLT scheduled?",
+        "answer": "The Readout to ELT/PLT is scheduled for 18th July."
+      },
+      {
+        "question": "When will FlexHack be launched?",
+        "answer": "FlexHack will be launched on 5th August."
+      },
+      {
+        "question": "What is the timeline for sourcing ideas for FlexHack?",
+        "answer": "Ideas will be sourced and approved by ELT/PLT from 5th August to 25th August."
+      },
+      {
+        "question": "When will the ideas be finalized?",
+        "answer": "The finalization of the idea backlog (Top ~15) will occur between 25th August to 30th August."
+      },
+      {
+        "question": "When will the challenges be announced and sign-ups take place?",
+        "answer": "The challenges will be announced, and sign-ups will take place from 2nd September to 6th September."
+      },
+      {
+        "question": "What are the dates for the execution phase?",
+        "answer": "The challenge execution phase will occur from 4th October to 11th October."
+      },
+      {
+        "question": "When will the demo presentations and evaluations take place?",
+        "answer": "The presentations and evaluations are scheduled for the week of 14th October."
+      },
+      {
+        "question": "When will the top 5 teams present their demo to Brian?",
+        "answer": "The top 5 teams will present their demo to Brian in the week of 21st October."
+      },
+      {
+        "question": "When will the winners of FlexHack be announced?",
+        "answer": "The winners will be announced in the week of 28th October."
+      },
+      {
+        "question": "Who are the organizing commitee memebers?",
+        "answer": "Aditi Agarwal, Hanumanth Gowda, Vaibhav Neharkar, Shabina Chandapasha"
       }
     ]
   }

@@ -14,7 +14,7 @@ CORS(app)  # Allow Cross-Origin Requests
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Path to the knowledge base file
-KNOWLEDGE_BASE_PATH = r'C:\Users\AShetty\flexbot\backend\kn.json'  # Adjust the path as needed
+KNOWLEDGE_BASE_PATH = r'C:\Users\AShetty\Chatbot-flexera\backend\kn.json'  # Adjust the path as needed
 
 # Load the knowledge base
 def load_knowledge_base(file_path):
