@@ -6,6 +6,7 @@ import time
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)  # Allow Cross-Origin Requests
@@ -15,6 +16,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 # Path to the knowledge base file
 KNOWLEDGE_BASE_PATH = r'C:\Users\AShetty\flexera-chatbot\backend\kn.json'  # Adjust the path as needed
+
+# Path to the log file
+LOG_FILE_PATH = r'C:\Users\AShetty\flexera-chatbot\backend\chatbot_logs.json'  # Adjust the path as needed
 
 # Load the knowledge base
 def load_knowledge_base(file_path):
@@ -56,6 +60,34 @@ def contains_abusive_language(text):
     sentiment = analyzer.polarity_scores(text)
     return sentiment['compound'] < -0.5
 
+# Function to log the conversation
+def log_conversation(question, answer):
+    log_entry = {
+        'timestamp': datetime.now().isoformat(),
+        'question': question,
+        'answer': answer
+    }
+    
+    try:
+        # Load existing logs
+        try:
+            with open(LOG_FILE_PATH, 'r') as log_file:
+                logs = json.load(log_file)
+        except FileNotFoundError:
+            logs = []
+        
+        # Add new entry
+        logs.append(log_entry)
+        
+        # Save updated logs
+        with open(LOG_FILE_PATH, 'w') as log_file:
+            json.dump(logs, log_file, indent=4)
+        
+        logging.info(f"Logged conversation: {log_entry}")
+        
+    except Exception as e:
+        logging.error(f"Error logging conversation: {e}")
+
 # Load and train initial models
 knowledge_base = load_knowledge_base(KNOWLEDGE_BASE_PATH)
 vectorizer, clf = train_intent_classifier(knowledge_base)
@@ -76,15 +108,20 @@ def get_flexhack_response():
     
     # Detect abusive language
     if contains_abusive_language(user_input):
-        return jsonify({'response': "Please refrain from using abusive language."})
+        response = "Please refrain from using abusive language."
+        log_conversation(user_input, response)
+        return jsonify({'response': response})
     
-    # Generate response from chatbot
-    if vectorizer and clf:
+    # Check if the user's question is in the knowledge base
+    if user_input.lower() in [q["question"].lower() for q in knowledge_base["questions"]]:
         X_user = vectorizer.transform([user_input])
         predicted_answer = clf.predict(X_user)[0]
-        return jsonify({'response': predicted_answer})
+        response = predicted_answer
     else:
-        return jsonify({'response': "Sorry, the chatbot is not functioning properly."})
+        response = "Sorry, I can't answer this question."
+    
+    log_conversation(user_input, response)
+    return jsonify({'response': response})
 
 @app.route('/add-question', methods=['POST'])
 def add_question():

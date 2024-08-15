@@ -145,7 +145,191 @@
     {
       "question": "When will the winners of FlexHack be announced?",
       "answer": "The winners will be announced in the week of 28th October."
-    }
+    },
+    {
 
+      "question": "When was the readout to ELT/PLT scheduled?",
+      "answer": "The readout to ELT/PLT was scheduled for 18th July."
+     },
+     {
+      "question": "What was the timeline for sourcing ideas for FlexHack?",
+      "answer": "Ideas were sourced and approved by ELT/PLT from 5th August to 25th August."
+     },
+     {
+      "question": "What were the dates for the challenge execution phase?",  
+      "answer": "The challenge execution phase took place from 4th October to 11th October." 
+     },
+     {
+      "question": "When did the demo presentations and evaluations take place?",   
+      "answer": "The demo presentations and evaluations took place during the week of 14th October."   
+     },
+     {
+      "question": "When was the top 5 demo presentation to Brian scheduled?",  
+      "answer": "The top 5 demo presentation to Brian was scheduled for the week of 21st October."
+     },
+     {
+      "question": "What was the purpose of the readout to ELT/PLT?",   
+      "answer": "The purpose of the readout to ELT/PLT was to provide an overview and updates on FlexHack."
+     },
+     {
+      "question": "What do participants need to submit for FlexHack?",  
+      "answer": "Participants need to submit their respective ideas in a submit form."  
+     },
+     {
+      "question": "Who is responsible for reviewing and approving final ideas in FlexHack?",   
+      "answer": "The ELT/PLT is responsible for reviewing and approving final ideas from the overall sourced idea backlog."  
+     },
+     {
+      "question": "What is the role of ELT/PLT in the FlexHack idea submission process?",  
+      "answer": "The ELT/PLT is responsible for reviewing and approving the final ideas from the overall sourced idea backlog."  
+     },
+     {
+      "question": "Which group has the final say on the approval of FlexHack ideas?",  
+      "answer": "The ELT/PLT group has the final say on the approval of FlexHack ideas."
+    },
+    {
+      "question": "What involvement is expected from SMEs in FlexHack?",   
+      "answer": "SMEs are expected to provide 1-2 hours per week of effort for mentoring and guidance, with overall 5-6 hours needed for the entire event."
+    },
+    {
+      "question": "How much time is required from SMEs during FlexHack?",   
+      "answer": "SMEs are required to spend 1-2 hours per week and overall 5-6 hours for the entire event."
+    },
+    {
+      "question": "What is the expected effort from SMEs for FlexHack?",   
+      "answer": "SMEs are expected to contribute 1-2 hours per week, with a total of 5-6 hours for the entire Hackathon'24 event."
+    },
+    {
+      "question": "What promotional material is needed for FlexHack?",   
+      "answer": "Brief 2-5 minute video challenge overviews are needed for each challenge."
+    },
+    {
+      "question": "What is the purpose of the promotional videos for FlexHack?",   
+      "answer": "The promotional videos, which are 2-5 minutes long, help participating teams understand the problem they need to solve."   
+    },
+    {
+      "question": "How long should the promotional challenge overview videos be for FlexHack?",  
+      "answer": "The promotional challenge overview videos should be 2-5 minutes long."   
+    },
+    {
+      "question": "What is the evaluation process for FlexHack challenges?",   
+      "answer": "The evaluation process involves criteria set by the ELT/PLT, and they will allocate time slots for evaluating challenge outcomes."  
+    },
+    {
+      "question": "How is the evaluation of FlexHack challenges managed?",   
+      "answer": "The ELT/PLT manages the evaluation of FlexHack challenges using set criteria and allocates time slots for this purpose."  
+    },
+    {
+      "question": "What should be included in the Hackathon idea template?",  
+      "answer": "The Hackathon idea template should include sections like Idea Title, Sponsor, Theme/Product, Business Driver, PM, Problem Statement, Solution Summary, Solution Details, Acceptance Criteria, Implementation Notes, and Priorities."  
+    },
+    {
+      "question": "What is the role of the Sponsor in the Hackathon idea template?",   
+      "answer": "The Sponsor, usually an ELT/PLT member, is responsible for providing guidance and oversight for the challenge."  
+    },
+    {
+      "question": "What does the Sponsor do in the context of the Hackathon idea template?",  
+      "answer": "The Sponsor oversees the challenge and provides necessary guidance as part of the Hackathon idea template."  
+    },
+    {
+      "question": "What is the purpose of the Problem Statement in the Hackathon idea template?",   
+      "answer": "The Problem Statement outlines why the idea is needed, the issues it addresses, and the expected positive impact."   
+    },
+    {
+      "question": "What are the guidelines for FlexHack idea submission?",   
+      "answer": "FlexHack ideas must align with the organization's FY25 roadmap/backlog, require 40-60 hours of implementation effort, and be feasible for a team of 4-5 members."   
+    },
+    {
+      "question": "What should FlexHack ideas align with?",   
+      "answer": "FlexHack ideas should align with the overall organization’s FY25 roadmap/backlog."  
+    },
+    {
+      "question": "How many hours of implementation effort should FlexHack ideas require?",  
+      "answer": "FlexHack ideas should require 40-60 hours of implementation effort."   
+    },
+    {
+      "question": "How should FlexHack ideas be scoped?",  
+      "answer": "Ideas should be scoped to align with FY25 goals, require 40-60 hours of work, and be handled by a team of 4-5 members."  
+    },
+    {
+      "question": "What is the primary theme of FlexHack 2024?",  
+      "answer": "The primary themes are ITAM, Hybrid FinOps, TI Platform, AI, Sustainability, Security, Quality, Cost Reduction, Customer Adoption, and Sales Cycle."   
+    },
+    {
+      "question": "Who can participate in FlexHack 2024?",   
+      "answer": "FlexHack 2024 is open to all Flexera and Snow Engineering and Product teams."   
+    },
+    {
+      "question": "What themes are prioritized in FlexHack 2024?",  
+      "answer": "Themes prioritized include ITAM, Hybrid FinOps, TI Platform, AI, Sustainability, Security, Quality, Cost Reduction, Customer Adoption, and Sales Cycle."  
+    },
+    {
+      "question": "When is the sign-up period for FlexHack 2024 challenges?",   
+      "answer": "The sign-up period for FlexHack 2024 challenges is from September 2nd to September 6th, 2024."   
+    },
+    {
+      "question": "What is the significance of the TI Platform in FlexHack 2024?",   
+      "answer": "The TI Platform is one of the key themes, focusing on upgrading the platform to meet data-driven demands and accelerate innovation."   
+    },
+    {
+      "question": "How will the top 5 demos be presented in FlexHack 2024?",
+      "answer": "The top 5 demos will be presented to Brian during the week of October 21st, 2024."   
+    },
+    {
+      "question": "How are the final ideas for FlexHack 2024 selected?",
+      "answer": "Final ideas are selected by the ELT/PLT based on their alignment with strategic goals and their potential impact."
+    },
+    {
+      "question": "What are the expected deliverables for teams in FlexHack 2024?",   
+      "answer": "Teams are expected to deliver a solution that aligns with the Problem Statement, meets the Acceptance Criteria, and includes detailed Implementation Notes."   
+    },
+    {
+      "question": "What are the priorities for FlexHack 2024 challenges?",
+      "answer": "Priorities include innovation, alignment with strategic goals, feasibility of implementation, and potential impact on Flexera's business."
+    },
+    {
+      "question": "What kind of impact is expected from FlexHack 2024?",
+      "answer": "The expected impact includes improved innovation, enhanced collaboration across teams, and the development of solutions that align with Flexera's strategic goals."   
+    },
+    {
+      "question": "Who can nominate SMEs for FlexHack 2024?",
+      "answer": "SMEs can be nominated by the ELT/PLT to provide mentorship and guidance for sponsored challenges."
+    },
+    {
+      "question": "How can teams ensure their ideas are aligned with FlexHack 2024 objectives?",
+      "answer": "Teams should ensure their ideas align with the FY25 roadmap, are feasible for implementation, and contribute to the key themes identified by the organizers."   
+    },
+    {
+      "question": "How will the FlexHack 2024 winners be determined?",
+      "answer": "Winners will be determined based on the evaluation criteria set by the ELT/PLT, which assesses innovation, feasibility, and impact."
+    },
+    {
+      "question": "How can teams prepare for FlexHack 2024?",
+      "answer": "Teams can prepare by reviewing the Hackathon Idea Template, understanding the key themes, and aligning their ideas with the FY25 roadmap."
+    },
+    {
+      "question": "What is the role of the Problem Statement in the FlexHack 2024 submission process?",   
+      "answer": "The Problem Statement defines the need for the idea, the issues it addresses, and the positive impact it aims to achieve."
+    },
+    {
+      "question": "What kind of solutions are expected from FlexHack 2024 participants?",
+      "answer": "Participants are expected to develop solutions that are innovative, feasible for implementation, and aligned with the strategic goals outlined by the organizers."
+    },
+    {
+      "question": "What is the focus of FlexHack 2024?",  
+      "answer": "The focus of FlexHack 2024 is on driving innovation in key areas such as ITAM, Hybrid FinOps, TI Platform, Sustainability, and Security."
+    },
+    {
+      "question": "How can teams make the most of their participation in FlexHack 2024?",  
+      "answer": "Teams can make the most of their participation by aligning their ideas with strategic goals, focusing on innovation, and collaborating effectively."   
+    },
+    {
+      "question": "What are the main benefits of participating in FlexHack 2024?",  
+      "answer": "Main benefits include the opportunity to drive innovation, collaborate with other teams, and contribute to Flexera's strategic growth."  
+    },
+    {
+      "question": "How will the top 5 demos be evaluated in FlexHack 2024?",
+      "answer": "The top 5 demos will be evaluated by Brian and other senior leaders based on the criteria set by the ELT/PLT."
+    }
   ]
 }
