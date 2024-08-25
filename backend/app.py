@@ -3,10 +3,12 @@ from flask_cors import CORS
 import json
 import logging
 import time
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.naive_bayes import MultinomialNB
-from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import numpy as np
+import torch
+import faiss
+from transformers import AutoTokenizer, AutoModel, AutoModelForCausalLM
 from datetime import datetime
+from textblob import TextBlob
 
 app = Flask(__name__)
 CORS(app)  # Allow Cross-Origin Requests
@@ -14,11 +16,8 @@ CORS(app)  # Allow Cross-Origin Requests
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Path to the knowledge base file
-KNOWLEDGE_BASE_PATH = r'C:\Users\AShetty\flexera-chatbot\backend\kn.json'  # Adjust the path as needed
-
-# Path to the log file
-LOG_FILE_PATH = r'C:\Users\AShetty\flexera-chatbot\backend\chatbot_logs.json'  # Adjust the path as needed
+KNOWLEDGE_BASE_PATH = r'C:\Users\Vivek\Downloads\flexera-chatbot\flexera-chatbot\backend\kn3.json'
+LOG_FILE_PATH = r'C:\Users\Vivek\Downloads\flexera-chatbot\flexera-chatbot\backend\chatbot_logs.json'
 
 # Load the knowledge base
 def load_knowledge_base(file_path):
@@ -38,27 +37,50 @@ def save_knowledge_base(file_path, data):
     except Exception as e:
         logging.error(f"Error saving knowledge base: {e}")
 
-# Train the intent classifier
-def train_intent_classifier(knowledge_base):
-    try:
-        questions = [q["question"] for q in knowledge_base["questions"]]
-        answers = [q["answer"] for q in knowledge_base["questions"]]
-        vectorizer = CountVectorizer()
-        X = vectorizer.fit_transform(questions)
-        clf = MultinomialNB()
-        clf.fit(X, answers)
-        return vectorizer, clf
-    except Exception as e:
-        logging.error(f"Error training classifier: {e}")
-        return None, None
+# Retriever class for retrieving the most relevant answers
+class Retriever:
+    def __init__(self, model_name='distilbert-base-uncased'):
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModel.from_pretrained(model_name)
+        self.index = None  # For FAISS indexing
+        self.knowledge_base = []
 
-# Initialize the VADER sentiment analyzer
-analyzer = SentimentIntensityAnalyzer()
+    def embed_text(self, text):
+        inputs = self.tokenizer(text, return_tensors='pt', truncation=True, padding=True)
+        outputs = self.model(**inputs)
+        return outputs.last_hidden_state[:, 0, :].detach().numpy()
 
-# Function to detect abusive language using VADER
+    def build_index(self, knowledge_base):
+        self.knowledge_base = knowledge_base
+        embeddings = []
+        for item in knowledge_base:
+            embeddings.append(self.embed_text(item['question']))
+        embeddings = np.vstack(embeddings)
+
+        self.index = faiss.IndexFlatL2(embeddings.shape[1])
+        self.index.add(embeddings)
+
+    def retrieve(self, question, top_k=1):  # Adjust top_k to limit to the most relevant
+        question_embedding = self.embed_text(question)
+        distances, indices = self.index.search(question_embedding, top_k)
+        return indices[0]  # Return indices of the most similar question(s)
+
+# Generator class for generating answers based on retrieved context
+class Generator:
+    def __init__(self, model_name='distilgpt2'):
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.model = AutoModelForCausalLM.from_pretrained(model_name)
+
+    def generate(self, context, question):
+        input_text = f"{context} {question}"
+        inputs = self.tokenizer.encode(input_text, return_tensors='pt', truncation=True, max_length=256)  # Limit input length
+        outputs = self.model.generate(inputs, max_new_tokens=100, repetition_penalty=2.0)  # Use repetition_penalty to reduce redundancy
+        return self.tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+# Function to detect abusive language using TextBlob sentiment analysis
 def contains_abusive_language(text):
-    sentiment = analyzer.polarity_scores(text)
-    return sentiment['compound'] < -0.5
+    blob = TextBlob(text)
+    return blob.sentiment.polarity < -0.5
 
 # Function to log the conversation
 def log_conversation(question, answer):
@@ -67,7 +89,7 @@ def log_conversation(question, answer):
         'question': question,
         'answer': answer
     }
-    
+   
     try:
         # Load existing logs
         try:
@@ -75,22 +97,41 @@ def log_conversation(question, answer):
                 logs = json.load(log_file)
         except FileNotFoundError:
             logs = []
-        
+       
         # Add new entry
         logs.append(log_entry)
-        
+       
         # Save updated logs
         with open(LOG_FILE_PATH, 'w') as log_file:
             json.dump(logs, log_file, indent=4)
-        
+       
         logging.info(f"Logged conversation: {log_entry}")
-        
+       
     except Exception as e:
         logging.error(f"Error logging conversation: {e}")
 
-# Load and train initial models
-knowledge_base = load_knowledge_base(KNOWLEDGE_BASE_PATH)
-vectorizer, clf = train_intent_classifier(knowledge_base)
+# Chatbot class integrating the Retriever and Generator
+class Chatbot:
+    def __init__(self, knowledge_base_path):
+        # Load the knowledge base
+        self.knowledge_base = load_knowledge_base(knowledge_base_path)
+
+        # Initialize retriever and generator
+        self.retriever = Retriever()
+        self.retriever.build_index(self.knowledge_base["questions"])
+
+        self.generator = Generator()
+
+    def answer_question(self, question):
+        # Retrieve relevant context from the knowledge base
+        retrieved_indices = self.retriever.retrieve(question)
+        context = " ".join([self.knowledge_base["questions"][idx]['answer'] for idx in retrieved_indices])
+
+        # Generate the final answer
+        return self.generator.generate(context, question)
+
+# Initialize the chatbot
+bot = Chatbot(KNOWLEDGE_BASE_PATH)
 
 # Home route to serve the frontend
 @app.route('/')
@@ -102,24 +143,19 @@ def home():
 def get_flexhack_response():
     time.sleep(2)
     user_input = request.json.get('message')
-    
+   
     if not user_input:
         return jsonify({'response': "No input provided."})
-    
+   
     # Detect abusive language
     if contains_abusive_language(user_input):
         response = "Please refrain from using abusive language."
         log_conversation(user_input, response)
         return jsonify({'response': response})
-    
-    # Check if the user's question is in the knowledge base
-    if user_input.lower() in [q["question"].lower() for q in knowledge_base["questions"]]:
-        X_user = vectorizer.transform([user_input])
-        predicted_answer = clf.predict(X_user)[0]
-        response = predicted_answer
-    else:
-        response = "Sorry, I can't answer this question."
-    
+   
+    # Get response from the chatbot
+    response = bot.answer_question(user_input)
+   
     log_conversation(user_input, response)
     return jsonify({'response': response})
 
@@ -127,7 +163,7 @@ def get_flexhack_response():
 def add_question():
     user_input = request.json.get('question')
     user_response = request.json.get('response')
-    
+   
     if not user_input or not user_response:
         return jsonify({'status': 'error', 'message': 'Question and response are required.'})
 
@@ -136,14 +172,13 @@ def add_question():
         knowledge_base = load_knowledge_base(KNOWLEDGE_BASE_PATH)
         new_entry = {"question": user_input, "answer": user_response}
         knowledge_base["questions"].append(new_entry)
-        
+       
         # Save updated knowledge base
         save_knowledge_base(KNOWLEDGE_BASE_PATH, knowledge_base)
         logging.info(f"Added new entry: {new_entry}")
 
-        # Retrain model with updated knowledge base
-        global vectorizer, clf
-        vectorizer, clf = train_intent_classifier(knowledge_base)
+        # Retrain retriever model with updated knowledge base
+        bot.retriever.build_index(knowledge_base["questions"])
         logging.info("Model retrained successfully.")
 
         return jsonify({'status': 'success', 'message': 'Question added and model retrained.'})
@@ -151,15 +186,6 @@ def add_question():
     except Exception as e:
         logging.error(f"Error adding question: {e}")
         return jsonify({'status': 'error', 'message': 'Failed to add question.'})
-
-# Placeholder functions for Flexera and Gemini responses
-def get_flexera_response(query):
-    # Placeholder function to call Flexera API
-    return "Flexera API response"
-
-def get_gemini_llm_response(query):
-    # Placeholder function to call Gemini LLM
-    return "Gemini LLM response"
 
 # Run the Flask app
 if __name__ == '__main__':
