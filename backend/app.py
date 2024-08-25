@@ -16,8 +16,8 @@ CORS(app)  # Allow Cross-Origin Requests
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-KNOWLEDGE_BASE_PATH = r'C:\Users\Vivek\Downloads\flexera-chatbot\flexera-chatbot\backend\kn3.json'
-LOG_FILE_PATH = r'C:\Users\Vivek\Downloads\flexera-chatbot\flexera-chatbot\backend\chatbot_logs.json'
+KNOWLEDGE_BASE_PATH = r'kn3.json'
+LOG_FILE_PATH = r'chatbot_logs.json'
 
 # Load the knowledge base
 def load_knowledge_base(file_path):
